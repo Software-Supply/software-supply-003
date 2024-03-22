@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vulnerable-pod
+spec:
+  containers:
+    - name: vulnerable-container
+      image: busybox:latest
+      # Granting unnecessary privileges
+      securityContext:
+        privileged: true  # This is a potential vulnerability
+  # Exposing all ports (not recommended)
+  hostNetwork: true
+
